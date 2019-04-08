@@ -339,3 +339,88 @@
 }
 
 
+/*第五屏*/
+.screen05 {
+    background: url('../images/05-bg.png');
+}
+.screen05 .content {
+    height: 100%;
+}
+.screen05 .text {
+    position: absolute;
+    left: 0;
+    bottom: 550px;
+}
+.screen05 .sofa {
+    position: absolute;
+    bottom: 100px;
+    left: 100px;
+    opacity: 0;
+    transform: rotate(28deg);
+}
+.screen05 .card {
+    position: absolute;
+    bottom: 210px;
+    left: 0;
+}
+.screen05 .card .cardImg {
+    position: relative;
+    z-index: 1;
+}
+.screen05 .card .orderImg {
+    position: absolute;
+    left: 130px;
+    top: -80px;
+    transform: translateY(80px);
+}
+.screen05 .mouse {
+    position: absolute;
+    right: 0;
+    top: 0;
+    overflow: hidden;
+    height: 100%;
+    width: 400px;
+}
+.screen05 .mouse .m1,
+.screen05 .mouse .m2 {
+    position: absolute;
+    bottom: 240px;
+    right: 0;
+}
+.screen05 .mouse .m2 {
+    opacity: 0;
+}
+.screen05.now .mouse .m2 {
+    opacity: 1;
+    transition: all .2s linear 1s;
+}
+.screen05 .mouse .hand {
+    position: absolute;
+    bottom: 0px;
+    right: 50px;
+    transform: translateY(500px);
+}
+.screen05.now .mouse .hand {
+    transition: all 1s linear;
+    transform: none;
+}
+.screen05.now .sofa {
+    animation: sofa05 2s linear 1.2s forwards;
+}
+@keyframes sofa05 {
+    from {
+        transform: translateY(-1000px) rotate(28deg);
+        opacity: 1;
+    }
+    50% {
+        transform: translateY(-150px) rotate(28deg);
+    }
+    100% {
+        opacity: 1;
+        transform: rotate(28deg);
+    }
+}
+.screen05.now .card .orderImg {
+    transition: all 1s linear 2.2s; 
+    transform: none;
+}
