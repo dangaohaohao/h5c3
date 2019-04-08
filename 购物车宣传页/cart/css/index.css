@@ -21,7 +21,7 @@
 .content {
     width: 900px;
     height: 600px;
-    background: rgba(0, 0, 0, 0.1);
+    /*background: rgba(0, 0, 0, 0.1);*/
     position: absolute;
     bottom: 0;
     left: 50%;
@@ -173,7 +173,7 @@
 }
 /*沙发做动画  当离开第二屏  和页面的滚动同步 动画时间保持一致*/
 .screen02.leaved .sofa{
-    animation: sofa02 1s linear ;
+    animation: sofa02 1s linear;
 }
 @keyframes sofa02 {
     from{
@@ -182,7 +182,7 @@
     to{
         opacity: 1;
         /*沙发下移*/
-        transform: translate(-80px,800px);
+        transform: translate(-80px,700px);
     }
 }
 
@@ -192,46 +192,150 @@
 .screen03{
     background: url("../images/03-bg.png") no-repeat center bottom;
 }
-.screen03 .sofa {
-	position: absolute;
-	top: 212px;
-	left: 180px;
-	display: none;
+.screen03 .sofa{
+    position: absolute;
+    left: 212px;
+    top: 180px;
+    display: none;
 }
-.screen03.now .sofa {
-	display: block;
+.screen03 .change{
+    position: absolute;
+    right: 115px;
+    bottom: 170px;
 }
-.screen03 .change {
-	position: absolute;
-	right: 115px;
-	bottom: 170px;
+.screen03 .change img:last-child{
+    position: absolute;
+    opacity: 0;
 }
-.screen03 .change img:last-child {
-	position: absolute;
-	opacity: 0;
+.screen03 .cart{
+    position: absolute;
+    right: 192px;
+    bottom: 100px;
 }
-.screen03.now .change img:first-child {
-	display: none;
+.screen03 .cart img:last-child{
+    position: absolute;
+    opacity: 0;
 }
-.screen03.now .change img:last-child {
-	position: static;
-	opacity: 1;
-	transition: all 1s linear ;
+.screen03.now .change img:first-child{
+    display: none;
 }
-.screen03 .cart {
-	position: absolute;
-	right: 192px;
-	bottom: 100px;
+.screen03.now .change img:last-child{
+    position: static;
+    opacity: 1;
+    transition: all 1s linear;
 }
-.screen03 .cart img:last-child {
-	position: absolute;
-	opacity: 0;
+.screen03.now .cart img:first-child{
+    display: none;
 }
-.screen03.now .cart img:first-child {
-	display: none;
+.screen03.now .cart img:last-child{
+    position: static;
+    opacity: 1;
+    transition: all 1s linear;
 }
-.screen03.now .cart img:last-child {
-	position: static;
-	opacity: 1;
-	transition: all 1s linear ;
+.screen03.now .sofa{
+    display: block;
+    z-index: 1001;
 }
+
+.screen03.leaved .sofa{
+    /*1.组合写法  多个转换属性之间空格  transform:rotate() translateX() skew() scale()*/
+    /*2.如果你先旋转  那么坐标轴也会旋转*/
+    /*3. 最好是先位移在旋转*/
+    animation: sofa03 1s linear;
+}
+@keyframes sofa03 {
+    from{}
+    to{
+        transform: translate(190px,666px) rotate(45deg);
+    }
+}
+
+
+
+/*第四屏*/
+.screen04{
+    background: url("../images/04-bg.png") no-repeat center bottom;
+}
+.screen04 .cloud{
+    position: absolute;
+    left: -400px;
+    top: -50px;
+    animation: cloud04 20s linear infinite alternate;
+}
+@keyframes cloud04 {
+    from{
+
+    }
+    to{
+        transform: translateX(1000px);
+    }
+}
+.screen04 .text{
+    text-align: center;
+    margin-top: 120px;
+}
+.screen04 .text img:last-child{
+    position: absolute;
+    opacity: 0;
+}
+.screen04 .text.show img:first-child{
+    position: absolute;
+    opacity: 0;
+}
+.screen04 .text.show img:last-child{
+    position: static;
+    opacity: 1;
+    transition: all 1s linear;
+}
+
+.screen04 .cart{
+    text-align: center;
+    margin-top: 50px;
+    position: relative;
+    z-index: 1002;
+}
+.screen04 .sofa{
+    position: absolute;
+    top: 200px;
+    left: 420px;
+    transform: rotate(45deg);
+    /*display: none;*/
+    opacity: 0;
+}
+.screen04 .address{
+    position: absolute;
+    width: 283px;
+    height: 270px;
+    left: 50%;
+    /*css3的居中 基于本身*/
+    transform: translateX(-50%);
+    bottom: 150px;
+    display: none;
+}
+.screen04 .address img:last-child{
+    position: absolute;
+    top: 60px;
+    left: 50%;
+    /*css3的居中 基于本身*/
+    transform: translateX(-50%);
+    z-index: 1;
+    display: none;
+}
+
+
+/*1.掐时间  做延时  完成动画的衔接*/
+/*2.jquery的动画  $('dom').animate(property,duration,speed,callback) */
+/*speed  (swing linear) */
+/*3.能不能监听到动画或者过度的结束*/
+/*4.css3当中 过渡 transitionend  动画 animationend*/
+.screen04.now .sofa{
+    opacity: 1;
+    transform: translateX(1000px);
+    transition: transform 3s;
+}
+.screen04.now .cart{
+    transition: all 3s;
+    transform: translateX(1000px);
+}
+
+
