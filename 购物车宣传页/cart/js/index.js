@@ -27,6 +27,17 @@ $(function () {
                 // currentSection.removeClass('now').addClass('leaved');
                 currentSection.addClass('leaved');
                 $('.screen06 .box').addClass('show');
+            }else if(index == 6 && nextIndex == 7){
+                /*当前是从第六页到第七页*/
+                $('.screen07 .star').addClass('show');
+                $('.screen07 .text').addClass('show');
+                $('.screen07 .star img').each(function(i,item){
+                    // $(item) = $(this);
+                    // jquery 的方式前提是：img:display:none; 毫秒
+                    // $(this).delay(i*0.5*1000).fadeIn();
+                    // img opacity 此时s为单位
+                    $(this).css('transition-delay',i*0.5+'s');
+               });
             }
         },
         /*最好在组件初始完毕或者插件内容渲染完毕*/
