@@ -60,6 +60,29 @@ $(function () {
                 $('.screen04 .address').show().find('img:last').fadeIn(1000);
                 $('.screen04 .text').addClass('show');
             });
+
+             /*第八屏功能*/
+            /*1.手要跟着鼠标移动*/
+            $('.screen08').on('mousemove',function (e) {
+                /*鼠标的坐标设置给手*/
+                $(this).find('.hand').css({
+                    left:e.clientX -190,
+                    top:e.clientY - 20
+                });
+            }).find('.again').on('click',function () {
+                /*2.点击再来一次重置动画跳回第一页*/
+                /*动画怎么怎么进行的？*/
+                /*2.1 加now  类*/
+                /*2.2 加leaved  类*/
+                /*2.3 加show 类*/
+                $('.now,.leaved,.show').removeClass('now').removeClass('leaved').removeClass('show');
+                /*2.4 加css属性  后果：加一个style属性*/
+                /*2.5 用jquery方法  show() fadeIn() 后果：加一个style属性*/
+                $('.content [style]').removeAttr('style');
+
+                /*跳回第一页*/
+                $.fn.fullpage.moveTo(1);
+            });
         },
         /*页面切换的时间 默认是700*/
         scrollingSpeed:1000
